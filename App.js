@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import { Button, StyleSheet, View} from 'react-native';
+import { Provider } from 'react-redux';
 import firebase from 'firebase'
 
+import Store from './src/Store';
 import Header from './src/components/Header';
 import LoginForm from './src/components/LoginForm';
 
@@ -44,10 +46,12 @@ export default class App extends Component {
 
   render() {
     return (
-      <View>
-        <Header title='CryptoWatch' />
-        {this.renderComponent()}
-      </View>
+      <Provider store={Store}>
+        <View>
+          <Header title='CryptoWatch' />
+          {this.renderComponent()}
+        </View>
+      </Provider>
     );
   }
 }
