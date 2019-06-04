@@ -1,6 +1,9 @@
 import { combineReducers } from 'redux';
-import CryptoReducer from './CryptoReducer';
+import Header from '../components/Header';
+import CryptoContainer from '../components/CryptoContainer';
+
+export { Header, CryptoContainer };
 
 export default combineReducers({
-    crypto: CryptoReducer
+    state: (state = {}) => state
 });

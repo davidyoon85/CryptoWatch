@@ -5,7 +5,47 @@ import firebase from 'firebase';
 import Input from './Input';
 
 class LoginForm extends Component {
-    state = {email:'', password:''};
+    state = {
+        loggedIn: null,
+        email:'', 
+        password:''
+    };
+
+    componentDidMount() {
+        let config = {
+            apiKey: "AIzaSyAlgOvNvcNDuHf8S-19WDGypBxSqGaUQ8o",
+            authDomain: "cryptowatch-70367.firebaseapp.com",
+            databaseURL: "https://cryptowatch-70367.firebaseio.com",
+            projectId: "cryptowatch-70367",
+            storageBucket: "cryptowatch-70367.appspot.com",
+            messagingSenderId: "489116999570",
+            appId: "1:489116999570:web:b7d96bd921a5d1ea"
+        };
+        firebase.initializeApp(config);
+        firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+            this.setState({ loggedIn: true })
+        } else {
+            this.setState({ loggedIn: false })
+        }})
+    }
+
+    renderComponent() {
+        if (this.state.loggedIn) {
+            return (
+            <Button
+                title="Sign out"
+                onPress={() => firebase.auth().signOut()} 
+                />
+            );
+        }
+        return (
+            <Button
+                title="Sign out"
+                onPress={() => firebase.auth().signOut()} 
+                />
+        );
+    }
 
     onButtonPress() {
         this.setState({ error: '', loading: true })
@@ -70,6 +110,7 @@ class LoginForm extends Component {
                 />
 
                 {this.renderButton()}
+                {this.renderComponent()}
 
                 <Text style={styles.errorTextStyle}>
                     {this.state.error}
