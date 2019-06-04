@@ -1,6 +1,6 @@
 # CryptoWatch
 
-## New project
+## Project-in-progress
 
 ### Technologies include: React-native and Google Firebase 
 
