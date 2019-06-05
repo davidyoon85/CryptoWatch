@@ -8,7 +8,9 @@ class LoginForm extends Component {
     state = {
         loggedIn: null,
         email:'', 
-        password:''
+        password:'',
+        error: '',
+        loading: false
     };
 
     componentDidMount() {
@@ -69,8 +71,9 @@ class LoginForm extends Component {
 
     onLoginSuccess() {
         this.setState({
-            email: '', password: '', error: '', loading: false
+            loggedIn: true, email: '', password: '', error: '', loading: false
         })
+        this.props.navigation.navigate('Main')
     };
 
     onLoginFailure(errorMessage) {

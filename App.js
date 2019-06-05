@@ -7,6 +7,7 @@ import firebase from 'firebase'
 import Store from './src/Store';
 import Header from './src/components/Header';
 import LoginForm from './src/components/LoginForm';
+import Main from './src/components/Main';
 
 // export default class App extends Component {
 //   state = { loggedIn: null };
@@ -26,7 +27,8 @@ import LoginForm from './src/components/LoginForm';
 // }
 
 const StackNavigator = createStackNavigator({
-    Home: LoginForm
+    Home: LoginForm,
+    Main: Main
 })
 
 const AppContainer = createAppContainer(StackNavigator)
