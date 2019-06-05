@@ -97,29 +97,36 @@ class LoginForm extends Component {
     }
 
     render() {
-        return (
-            <View>
-                <Input label="Email"
-                    placeholder="user@mail.com"
-                    value={this.state.email}
-                    secureTextEntry={false}
-                    onChangeText={email => this.setState({ email })} 
-                />
-                <Input label="Password"
-                    placeholder="password"
-                    value={this.state.password}
-                    secureTextEntry={true}
-                    onChangeText={password => this.setState({ password })} 
-                />
+        if (this.state.loggedIn) {
+            return (
+                <View>
+                    {this.renderComponent()}
+                </View>
+            )
+        } else {
+            return (
+                <View>
+                    <Input label="Email"
+                        placeholder="user@mail.com"
+                        value={this.state.email}
+                        secureTextEntry={false}
+                        onChangeText={email => this.setState({ email })} 
+                    />
+                    <Input label="Password"
+                        placeholder="password"
+                        value={this.state.password}
+                        secureTextEntry={true}
+                        onChangeText={password => this.setState({ password })} 
+                    />
 
-                {this.renderButton()}
-                {this.renderComponent()}
+                    {this.renderButton()}
 
-                <Text style={styles.errorTextStyle}>
-                    {this.state.error}
-                </Text>
-            </View>
-        )
+                    <Text style={styles.errorTextStyle}>
+                        {this.state.error}
+                    </Text>
+                </View>
+            )
+        }
     }
 }
 
