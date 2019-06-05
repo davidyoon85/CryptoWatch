@@ -26,12 +26,16 @@ import LoginForm from './src/components/LoginForm';
 // }
 
 const StackNavigator = createStackNavigator({
-  Login: {
-    screen: LoginForm
-  }
+    Home: LoginForm
 })
 
-const App = createAppContainer(StackNavigator)
+const AppContainer = createAppContainer(StackNavigator)
+
+export default class App extends Component {
+  render() {
+    return <AppContainer />
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -51,7 +55,5 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
-
-export default App;
 
 
